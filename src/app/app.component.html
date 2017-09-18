@@ -1,20 +1,48 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div name="registration-title" style="text-align:left">
   <h1>
-    Welcome to {{title}}!
+    {{title}}
   </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div name="registration-popup">
 
+</div>
+<div name="registration-box">
+  <form (submit)="onSubmit()">
+    <label>First Name: </label>
+    <input type="text" name="fname" required minlength="3" maxlength="25"
+    [(ngModel)]="user.fname" #fname="ngModel">
+    <label>Last Name: </label>
+    <input type="text" name="lname" maxlength="25"
+    [(ngModel)]="user.lname">
+    <label>Email: </label>
+    <input type="email" name="email" required minlength="9" maxlength="30"
+    pattern ="^([a-zA-Z0-9@*#]{8,15})$"
+    [(ngModel)]="user.email" #email="ngModel">
+    <label>Password: </label>
+    <input type="password" name="password" required minlength="8" maxlength="25"
+    [(ngModel)]="user.password">
+    <label>Confirm Password: </label>
+    <input type="password" name="confirm" [(ngModel)]="user.confirm">
+    <label>Street: </label>
+    <input type="text" name="street" [(ngModel)]="user.street">
+    <label>Apt: </label>
+    <input type="text" name="apt" [(ngModel)]="user.apt">
+    <label>City: </label>
+    <input type="text" name="city" [(ngModel)]="user.city">
+    <label>State: </label>
+    <input type="text" name="state" [(ngModel)]="user.state">
+    <label>Yes</label>
+    <input type="radio" name="lucky" value="yes" [(ngModel)]="user.lucky">
+    <label>No</label>
+    <input type="radio" name="lucky" value = "no" [(ngModel)]="user.lucky">
+    <input type="submit">
+  </form>
+</div>
+  {{ user | json }}
+<p></p>
+  {{ users | json }}
+<p>{{ fname.errors | json }}</p>
+<p>{{ fname.valid | json }}</p>
+<p>{{ email.errors | json }}</p>
+<p>{{ email.valid | json }}</p>
